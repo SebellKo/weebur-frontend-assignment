@@ -2,9 +2,9 @@
 
 import FlexItem from '@/features/Home/components/List/FlexItem';
 import GridItem from '@/features/Home/components/List/GridItem';
-import { ProductRes } from '@/features/types/api';
+import { ProductRes } from '@/features/Home/types/api';
 import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
-import { getProducts } from '@/features/api/getProducts';
+import { getProducts } from '@/features/Home/api/getProducts';
 import { useLayout } from '@/hooks/useLayout';
 
 interface Props {

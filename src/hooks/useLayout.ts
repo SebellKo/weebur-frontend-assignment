@@ -1,7 +1,7 @@
 'use client';
 
 import { useLayoutEffect, useState } from 'react';
-import { Layout } from '@/features/types/layout';
+import { Layout } from '@/features/Home/types/layout';
 
 export const useLayout = () => {
   const [layout, setLayout] = useState<Layout>('flex');

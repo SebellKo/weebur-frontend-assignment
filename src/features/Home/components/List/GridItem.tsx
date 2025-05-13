@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Product } from '@/features/types/api';
+import { Product } from '@/features/Home/types/api';
 
 interface Props {
   product: Product;

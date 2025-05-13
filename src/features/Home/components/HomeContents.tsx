@@ -1,7 +1,7 @@
 import List from '@/features/Home/components/List/List';
 import SearchForm from '@/features/Home/components/Search/SearchForm';
 import { Separator } from '@/components/ui/separator';
-import { getProducts } from '@/features/api/getProducts';
+import { getProducts } from '@/features/Home/api/getProducts';
 
 export default async function HomeContents() {
   const initialData = await getProducts({ limit: 20, skip: 0 });
