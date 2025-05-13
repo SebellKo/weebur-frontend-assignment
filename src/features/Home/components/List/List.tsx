@@ -15,7 +15,8 @@ interface Props {
 
 function List({ initialData }: Props) {
   const [currentLayout, setCurrentLayout] = useState<Layout | null>(null);
-  const { products, fetchNextPage, hasNextPage } = useList(initialData);
+  const { products, fetchNextPage, hasNextPage, isFetching } =
+    useList(initialData);
   const { ref, inView } = useInView();
 
   useEffect(() => {
@@ -67,6 +68,11 @@ function List({ initialData }: Props) {
       {!hasNextPage && (
         <div className='flex justify-center items-center h-10'>
           <p className='text-sm text-gray-500'>더 이상 불러올 수 없습니다.</p>
+        </div>
+      )}
+      {isFetching && (
+        <div className='flex justify-center items-center h-10'>
+          <Spinner />
         </div>
       )}
     </ul>

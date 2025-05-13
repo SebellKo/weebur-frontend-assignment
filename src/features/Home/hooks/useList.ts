@@ -5,6 +5,7 @@ import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
 export const useList = (initialData: ProductRes) => {
   const {
     data: products,
+    isFetching,
     fetchNextPage,
     hasNextPage,
   } = useSuspenseInfiniteQuery({
@@ -24,5 +25,5 @@ export const useList = (initialData: ProductRes) => {
     },
   });
 
-  return { products, fetchNextPage, hasNextPage };
+  return { products, fetchNextPage, hasNextPage, isFetching };
 };
