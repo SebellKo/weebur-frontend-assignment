@@ -10,7 +10,7 @@ function FlexItem({ product }: Props) {
   const { title, description, thumbnail, rating, reviews } = product;
   return (
     <>
-      <li className='w-full flex flex gap-5 cursor-pointer'>
+      <li className='flex gap-5 cursor-pointer'>
         <Image src={thumbnail} alt='product' width={150} height={150} />
         <div className='flex flex-col gap-2'>
           <h3 className='text-lg font-bold hover:underline'>{title}</h3>
