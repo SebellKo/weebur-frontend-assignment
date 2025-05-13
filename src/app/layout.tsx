@@ -1,5 +1,6 @@
 import './globals.css';
 import { Metadata } from 'next';
+import Provider from '@/provider/Provider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -12,8 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+    <html lang='en'>
+      <body className={`antialiased`}>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }
