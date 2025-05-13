@@ -21,7 +21,7 @@ function GridItem({ product }: Props) {
         <h3 className='text-lg font-bold hover:underline'>{title}</h3>
         <div className='flex gap-2'>
           <p className='text-sm font-bold text-orange-500'>{`${rating} / 5.0`}</p>
-          <p className='text-sm text-gray-600'>{`(1200)`}</p>
+          <p className='text-sm text-gray-600'>{`(${reviews.length})`}</p>
         </div>
         <p className='text-sm text-gray-500'>{description}</p>
       </div>
