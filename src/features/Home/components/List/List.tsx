@@ -7,6 +7,7 @@ import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
 import { useList } from '@/features/Home/hooks/useList';
 import { Layout } from '@/features/Home/types/layout';
+import Spinner from '@/components/ui/spinner';
 
 interface Props {
   initialData: ProductRes;
@@ -40,7 +41,12 @@ function List({ initialData }: Props) {
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
-  if (!currentLayout) return <></>;
+  if (!currentLayout)
+    return (
+      <div className='flex justify-center items-center mt-10'>
+        <Spinner />
+      </div>
+    );
 
   return (
     <ul
