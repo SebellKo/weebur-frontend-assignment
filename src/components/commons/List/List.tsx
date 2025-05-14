@@ -13,9 +13,16 @@ interface Props {
   hasNextPage: boolean;
   fetchNextPage: () => void;
   isFetching: boolean;
+  isEmpty?: boolean;
 }
 
-function List({ products, hasNextPage, fetchNextPage, isFetching }: Props) {
+function List({
+  products,
+  hasNextPage,
+  fetchNextPage,
+  isFetching,
+  isEmpty,
+}: Props) {
   const [currentLayout, setCurrentLayout] = useState<Layout | null>(null);
   const { ref, inView } = useInView();
 
@@ -65,7 +72,7 @@ function List({ products, hasNextPage, fetchNextPage, isFetching }: Props) {
         );
       })}
       <div ref={ref} />
-      {!hasNextPage && (
+      {!isEmpty && !hasNextPage && (
         <div className='flex justify-center items-center h-10'>
           <p className='text-sm text-gray-500'>더 이상 불러올 수 없습니다.</p>
         </div>
@@ -73,6 +80,11 @@ function List({ products, hasNextPage, fetchNextPage, isFetching }: Props) {
       {isFetching && (
         <div className='flex justify-center items-center h-10'>
           <Spinner />
+        </div>
+      )}
+      {isEmpty && (
+        <div className='flex justify-center items-center h-10'>
+          <p className='text-sm text-gray-500'>일치하는 결과가 없습니다.</p>
         </div>
       )}
     </ul>

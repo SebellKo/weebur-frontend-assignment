@@ -9,10 +9,8 @@ interface Props {
 }
 
 function SearchList({ initialData, query }: Props) {
-  const { products, fetchNextPage, hasNextPage, isFetching } = useSearchList(
-    initialData,
-    query
-  );
+  const { products, fetchNextPage, hasNextPage, isFetching, isEmpty } =
+    useSearchList(initialData, query);
 
   return (
     <List
@@ -20,6 +18,7 @@ function SearchList({ initialData, query }: Props) {
       hasNextPage={hasNextPage}
       fetchNextPage={fetchNextPage}
       isFetching={isFetching}
+      isEmpty={isEmpty}
     />
   );
 }

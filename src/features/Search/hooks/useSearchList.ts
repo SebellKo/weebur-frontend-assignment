@@ -25,7 +25,9 @@ const useSearchList = (initialData: ProductRes, query: string) => {
     },
   });
 
-  return { products, fetchNextPage, hasNextPage, isFetching };
+  const isEmpty = products?.length === 0;
+
+  return { products, fetchNextPage, hasNextPage, isFetching, isEmpty };
 };
 
 export default useSearchList;
