@@ -18,6 +18,7 @@ function SearchForm() {
   const params = useSearchParams();
   const query = params.get('query');
   const sort = params.get('sort');
+  const selectValue = sort ?? 'default';
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,7 +36,7 @@ function SearchForm() {
   return (
     <form className='flex justify-between' onSubmit={handleSubmit}>
       {/* sort */}
-      <Select onValueChange={handleSort} defaultValue={sort ?? 'default'}>
+      <Select onValueChange={handleSort} value={selectValue}>
         <SelectTrigger>
           <SelectValue placeholder='정렬' />
         </SelectTrigger>
