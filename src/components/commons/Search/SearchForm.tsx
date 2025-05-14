@@ -26,6 +26,8 @@ function SearchForm() {
   };
 
   const handleSort = (value: string) => {
+    if (!query && value === 'rating') return router.push(`/?sort=rating`);
+    if (!query && value === 'default') return router.push(`/`);
     if (value === 'default') return router.push(`/search?query=${query}`);
     router.push(`/search?query=${query}&sort=rating`);
   };

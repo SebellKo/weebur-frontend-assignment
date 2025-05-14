@@ -6,11 +6,14 @@ import useList from '@/features/Home/hooks/useList';
 
 interface Props {
   initialData: ProductRes;
+  sort?: string;
 }
 
-function HomeList({ initialData }: Props) {
-  const { products, fetchNextPage, hasNextPage, isFetching } =
-    useList(initialData);
+function HomeList({ initialData, sort }: Props) {
+  const { products, fetchNextPage, hasNextPage, isFetching } = useList(
+    initialData,
+    sort
+  );
 
   return (
     <List
