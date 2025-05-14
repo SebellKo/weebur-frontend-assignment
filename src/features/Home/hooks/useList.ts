@@ -1,14 +1,14 @@
 import { getProducts } from '@/features/Home/api/getProducts';
 import { ProductRes } from '@/features/Home/types/api';
-import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
-export const useList = (initialData: ProductRes) => {
+const useList = (initialData: ProductRes) => {
   const {
     data: products,
     isFetching,
     fetchNextPage,
     hasNextPage,
-  } = useSuspenseInfiniteQuery({
+  } = useInfiniteQuery({
     queryKey: ['products'],
     queryFn: ({ pageParam }) => getProducts({ limit: 20, skip: pageParam }),
     initialPageParam: 0,
@@ -27,3 +27,5 @@ export const useList = (initialData: ProductRes) => {
 
   return { products, fetchNextPage, hasNextPage, isFetching };
 };
+
+export default useList;
