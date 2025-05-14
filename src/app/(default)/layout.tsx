@@ -1,6 +1,7 @@
 import SearchForm from '@/components/commons/Search/SearchForm';
 import { Separator } from '@/components/ui/separator';
-
+import { redirect } from 'next/navigation';
+import Banner from '@/components/commons/Banner';
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -8,7 +9,7 @@ export default function RootLayout({
 }>) {
   return (
     <main className='w-[900px] mx-auto flex flex-col justify-center items-center gap-[32px] '>
-      <h1 className='text-4xl font-bold my-10'>Product List</h1>
+      <Banner />
       <div className='w-full flex flex-col gap-3'>
         {/* 검색 */}
         <SearchForm />
