@@ -10,11 +10,14 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useRef } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 function SearchForm() {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const params = useSearchParams();
+  const query = params.get('query');
+  const sort = params.get('sort');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,13 +26,14 @@ function SearchForm() {
   };
 
   const handleSort = (value: string) => {
-    console.log(value);
+    if (value === 'default') return router.push(`/search?query=${query}`);
+    router.push(`/search?query=${query}&sort=rating`);
   };
 
   return (
     <form className='flex justify-between' onSubmit={handleSubmit}>
       {/* sort */}
-      <Select onValueChange={handleSort}>
+      <Select onValueChange={handleSort} defaultValue={sort ?? 'default'}>
         <SelectTrigger>
           <SelectValue placeholder='정렬' />
         </SelectTrigger>

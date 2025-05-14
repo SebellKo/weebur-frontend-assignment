@@ -6,11 +6,12 @@ import { ProductRes } from '@/types/api';
 interface Props {
   initialData: ProductRes;
   query: string;
+  sort?: string;
 }
 
-function SearchList({ initialData, query }: Props) {
+function SearchList({ initialData, query, sort }: Props) {
   const { products, fetchNextPage, hasNextPage, isFetching, isEmpty } =
-    useSearchList(initialData, query);
+    useSearchList(initialData, query, sort);
 
   return (
     <List

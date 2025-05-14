@@ -2,15 +2,19 @@ import { getSearch } from '@/features/Search/api/getSearch';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { ProductRes } from '@/types/api';
 
-const useSearchList = (initialData: ProductRes, query: string) => {
+const useSearchList = (
+  initialData: ProductRes,
+  query: string,
+  sort?: string
+) => {
   const {
     data: products,
     isFetching,
     fetchNextPage,
     hasNextPage,
   } = useInfiniteQuery({
-    queryKey: ['search', query],
-    queryFn: () => getSearch(query),
+    queryKey: ['search', query, sort],
+    queryFn: () => getSearch(query, sort),
     initialPageParam: 0,
     initialData: {
       pages: [initialData],

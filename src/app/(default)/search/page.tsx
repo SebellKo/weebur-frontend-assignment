@@ -4,10 +4,10 @@ import { getSearch } from '@/features/Search/api/getSearch';
 export default async function Search({
   searchParams,
 }: {
-  searchParams: Promise<{ query: string }>;
+  searchParams: Promise<{ query: string; sort?: string }>;
 }) {
-  const { query } = (await searchParams) || '';
-  const initialData = await getSearch(query);
+  const { query, sort } = (await searchParams) || '';
+  const initialData = await getSearch(query, sort);
 
-  return <SearchList initialData={initialData} query={query} />;
+  return <SearchList initialData={initialData} query={query} sort={sort} />;
 }
