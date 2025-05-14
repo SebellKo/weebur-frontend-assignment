@@ -10,11 +10,16 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useRef } from 'react';
+import { useRouter } from 'next/navigation';
+
 function SearchForm() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const searchValue = inputRef.current?.value;
+    router.push(`/search?query=${searchValue}`);
   };
 
   const handleSort = (value: string) => {
