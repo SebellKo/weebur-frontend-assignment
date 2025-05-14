@@ -9,8 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { useRef } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useRef } from 'react';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 
 function SearchForm() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -19,6 +19,13 @@ function SearchForm() {
   const query = params.get('query');
   const sort = params.get('sort');
   const selectValue = sort ?? 'default';
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname === '/' && inputRef.current) {
+      inputRef.current.value = '';
+    }
+  }, [pathname]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
