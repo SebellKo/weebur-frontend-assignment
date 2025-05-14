@@ -10,7 +10,7 @@ export const getProducts = async ({
     const queryString = sort
       ? `limit=${limit}&skip=${skip}&sortBy=${sort}&order=desc`
       : `limit=${limit}&skip=${skip}`;
-    console.log(queryString);
+
     const response = await fetch(
       `https://dummyjson.com/products?${queryString}`
     );
