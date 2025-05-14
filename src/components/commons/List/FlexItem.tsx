@@ -11,9 +11,11 @@ interface Props {
 
 /**
  * 리스트 아이템
+ * - 1줄에 하나의 상품정보 레이아웃 전용 아이템 컴포넌트
  * @param product : 상품 정보
  */
 function FlexItem({ product }: Props) {
+  // 제목 하이라이트를 위한 mouse over 상태
   const [isOver, setIsOver] = useState(false);
   const { title, description, thumbnail, rating, reviews } = product;
 
