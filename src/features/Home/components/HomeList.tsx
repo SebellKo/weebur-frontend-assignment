@@ -1,8 +1,9 @@
 'use client';
 
 import List from '@/components/commons/List/List';
-import { ProductRes } from '@/types/api';
-import useList from '@/features/Home/hooks/useList';
+import { ProductRes, ProductParams } from '@/types/api';
+import useList from '@/hooks/useList';
+import { getProducts } from '@/features/Home/api/getProducts';
 
 interface Props {
   initialData: ProductRes;
@@ -10,10 +11,9 @@ interface Props {
 }
 
 function HomeList({ initialData, sort }: Props) {
-  const { products, fetchNextPage, hasNextPage, isFetching } = useList(
-    initialData,
-    sort
-  );
+  const params = { limit: 20, skip: 0, sort };
+  const { products, fetchNextPage, hasNextPage, isFetching } =
+    useList<ProductParams>({ initialData, fetchFn: getProducts, params });
 
   return (
     <List

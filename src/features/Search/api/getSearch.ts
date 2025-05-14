@@ -1,7 +1,9 @@
-export const getSearch = async (query: string, sort?: string) => {
+import { SearchParams } from '@/features/Search/types/api';
+
+export const getSearch = async ({ query, limit, skip, sort }: SearchParams) => {
   const queryString = sort
-    ? `q=${query}&sortBy=${sort}&order=desc`
-    : `q=${query}`;
+    ? `q=${query}&limit=${limit}&skip=${skip}&sortBy=${sort}&order=desc`
+    : `q=${query}&limit=${limit}&skip=${skip}`;
 
   try {
     const response = await fetch(

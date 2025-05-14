@@ -1,16 +1,11 @@
 import { ProductRes } from '@/types/api';
-
-interface Props {
-  limit: number;
-  skip: number;
-  sort?: string;
-}
+import { ProductParams } from '@/types/api';
 
 export const getProducts = async ({
   limit,
   skip,
   sort,
-}: Props): Promise<ProductRes> => {
+}: ProductParams): Promise<ProductRes> => {
   try {
     const queryString = sort
       ? `limit=${limit}&skip=${skip}&sortBy=${sort}&order=desc`
