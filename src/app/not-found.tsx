@@ -2,6 +2,9 @@
 
 import { useRouter } from 'next/navigation';
 
+/**
+ * 404 페이지
+ */
 export default function NotFound() {
   const router = useRouter();
 

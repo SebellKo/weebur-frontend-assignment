@@ -13,11 +13,18 @@ interface Props {
   sort?: string;
 }
 
+/**
+ * 검색 리스트 컴포넌트
+ * @param initialData : 초기 데이터
+ * @param query : 검색 키워드
+ * @param sort : 정렬 기준
+ */
 function SearchList({ initialData, query, sort }: Props) {
   const params = { query, sort, limit: 20, skip: 0 };
+  // 검색 데이터 요청
   const { products, fetchNextPage, hasNextPage, isFetching, isEmpty } =
     useList<SearchParams>({ initialData, fetchFn: getSearch, params });
-  console.log(initialData);
+
   return (
     <List
       products={products}

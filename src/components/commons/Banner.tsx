@@ -2,8 +2,13 @@
 
 import { useRouter } from 'next/navigation';
 
+/**
+ * 배너 컴포넌트
+ */
 function Banner() {
   const router = useRouter();
+
+  // 배너 클릭시 홈화면 이동
   const handleClickBanner = () => {
     router.push('/');
   };

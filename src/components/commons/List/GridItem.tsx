@@ -7,7 +7,13 @@ interface Props {
   product: Product;
 }
 
+/**
+ * 그리드 아이템
+ * - 1줄에 4개의 상품정보 레이아웃 전용 아이템 컴포넌트
+ * @param product : 상품 정보
+ */
 function GridItem({ product }: Props) {
+  // 제목 하이라이트를 위한 mouse over 상태
   const [isOver, setIsOver] = useState(false);
   const { title, description, thumbnail, rating, reviews } = product;
 

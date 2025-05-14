@@ -1,3 +1,6 @@
+/**
+ * 제품 타입
+ */
 export type Product = {
   id: number;
   title: string;
@@ -38,6 +41,9 @@ export type Product = {
   images: string[];
 };
 
+/**
+ * 제품 응답 타입
+ */
 export interface ProductRes {
   products: Product[];
   total: number;
@@ -45,6 +51,9 @@ export interface ProductRes {
   limit: number;
 }
 
+/**
+ * 제품 요청 파라미터
+ */
 export interface ProductParams {
   limit: number;
   skip: number;

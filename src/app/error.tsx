@@ -2,6 +2,9 @@
 
 import { useRouter } from 'next/navigation';
 
+/**
+ * 서버 오류 발생시 표시되는 페이지
+ */
 export default function Error() {
   const router = useRouter();
 

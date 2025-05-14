@@ -8,6 +8,13 @@ interface Props<T> {
   params: T;
 }
 
+/**
+ * 리스트 데이터 요청 훅
+ * @param initialData : 초기 데이터
+ * @param fetchFn : 데이터 요청 함수
+ * @param params : 요청 파라미터
+ * @returns 리스트 데이터
+ */
 const useList = <T>({ initialData, fetchFn, params }: Props<T>) => {
   const {
     data: products,
@@ -17,15 +24,18 @@ const useList = <T>({ initialData, fetchFn, params }: Props<T>) => {
   } = useInfiniteQuery({
     queryKey: ['products', params],
     queryFn: ({ pageParam }) => {
+      // 제네릭 타입에 따른 파라미터 추가
       const fetchParams = {
         ...params,
         skip: pageParam,
       } as T;
+      // 데이터 요청
       return fetchFn(fetchParams);
     },
     staleTime: 1000 * 60 * 3,
     gcTime: 1000 * 60 * 5,
     initialPageParam: 0,
+    // 초기 데이터 설정
     initialData: {
       pages: [initialData],
       pageParams: [0],

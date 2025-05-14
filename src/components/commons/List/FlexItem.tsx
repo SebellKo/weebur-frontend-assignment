@@ -9,6 +9,10 @@ interface Props {
   product: Product;
 }
 
+/**
+ * 리스트 아이템
+ * @param product : 상품 정보
+ */
 function FlexItem({ product }: Props) {
   const [isOver, setIsOver] = useState(false);
   const { title, description, thumbnail, rating, reviews } = product;
