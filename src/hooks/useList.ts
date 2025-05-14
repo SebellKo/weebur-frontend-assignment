@@ -23,6 +23,8 @@ const useList = <T>({ initialData, fetchFn, params }: Props<T>) => {
       } as T;
       return fetchFn(fetchParams);
     },
+    staleTime: 1000 * 60 * 3,
+    gcTime: 1000 * 60 * 5,
     initialPageParam: 0,
     initialData: {
       pages: [initialData],
