@@ -1,7 +1,7 @@
 'use client';
 
 import List from '@/components/commons/List/List';
-import { ProductRes } from '@/features/Home/types/api';
+import { ProductRes } from '@/types/api';
 import useList from '@/features/Home/hooks/useList';
 
 interface Props {

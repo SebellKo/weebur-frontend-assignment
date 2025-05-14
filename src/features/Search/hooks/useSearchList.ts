@@ -1,6 +1,6 @@
 import { getSearch } from '@/features/Search/api/getSearch';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { ProductRes } from '@/features/Home/types/api';
+import { ProductRes } from '@/types/api';
 
 const useSearchList = (initialData: ProductRes, query: string) => {
   const {

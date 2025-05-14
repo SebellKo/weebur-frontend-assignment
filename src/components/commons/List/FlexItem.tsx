@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
-import { Product } from '@/features/Home/types/api';
+import { Product } from '@/types/api';
 
 interface Props {
   product: Product;

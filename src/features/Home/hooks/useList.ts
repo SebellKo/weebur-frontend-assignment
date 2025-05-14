@@ -1,5 +1,5 @@
 import { getProducts } from '@/features/Home/api/getProducts';
-import { ProductRes } from '@/features/Home/types/api';
+import { ProductRes } from '@/types/api';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
 const useList = (initialData: ProductRes) => {

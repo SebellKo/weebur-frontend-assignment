@@ -1,4 +1,4 @@
-import { ProductRes } from '@/features/Home/types/api';
+import { ProductRes } from '@/types/api';
 
 interface Props {
   limit: number;
