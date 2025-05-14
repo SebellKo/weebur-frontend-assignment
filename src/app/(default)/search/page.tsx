@@ -1,6 +1,18 @@
 import SearchList from '@/features/Search/components/SearchList';
 import { getSearch } from '@/features/Search/api/getSearch';
 
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ query: string; sort?: string }>;
+}) {
+  const { query } = (await searchParams) || '';
+  return {
+    title: `Search ${query} | Product List`,
+    description: `Search ${query} | Product List`,
+  };
+}
+
 export default async function Search({
   searchParams,
 }: {

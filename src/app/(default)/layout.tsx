@@ -1,7 +1,7 @@
 import SearchForm from '@/components/commons/Search/SearchForm';
 import { Separator } from '@/components/ui/separator';
-import { redirect } from 'next/navigation';
 import Banner from '@/components/commons/Banner';
+
 export default function RootLayout({
   children,
 }: Readonly<{
