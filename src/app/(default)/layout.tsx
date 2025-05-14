@@ -1,4 +1,4 @@
-import SearchForm from '@/features/Home/components/Search/SearchForm';
+import SearchForm from '@/components/commons/Search/SearchForm';
 import { Separator } from '@/components/ui/separator';
 
 export default function RootLayout({
