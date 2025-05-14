@@ -44,3 +44,9 @@ export interface ProductRes {
   skip: number;
   limit: number;
 }
+
+export interface ProductParams {
+  limit: number;
+  skip: number;
+  sort?: string;
+}
