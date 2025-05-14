@@ -57,21 +57,23 @@ function List({
     );
 
   return (
-    <ul
-      className={`${
-        currentLayout === 'flex'
-          ? 'flex flex-col gap-3 p-3'
-          : 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-3'
-      }`}
-    >
-      {products.map((product) => {
-        return currentLayout === 'flex' ? (
-          <FlexItem key={product.id} product={product} />
-        ) : (
-          <GridItem key={product.id} product={product} />
-        );
-      })}
-      <div ref={ref} />
+    <>
+      <ul
+        className={`${
+          currentLayout === 'flex'
+            ? 'flex flex-col gap-3 p-3'
+            : 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-3'
+        }`}
+      >
+        {products.map((product) => {
+          return currentLayout === 'flex' ? (
+            <FlexItem key={product.id} product={product} />
+          ) : (
+            <GridItem key={product.id} product={product} />
+          );
+        })}
+        <div ref={ref} />
+      </ul>
       {!isEmpty && !hasNextPage && (
         <div className='flex justify-center items-center h-10'>
           <p className='text-sm text-gray-500'>더 이상 불러올 수 없습니다.</p>
@@ -87,7 +89,7 @@ function List({
           <p className='text-sm text-gray-500'>일치하는 결과가 없습니다.</p>
         </div>
       )}
-    </ul>
+    </>
   );
 }
 
