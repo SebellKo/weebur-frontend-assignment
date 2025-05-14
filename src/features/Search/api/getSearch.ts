@@ -5,13 +5,13 @@ export const getSearch = async ({ query, limit, skip, sort }: SearchParams) => {
     ? `q=${query}&limit=${limit}&skip=${skip}&sortBy=${sort}&order=desc`
     : `q=${query}&limit=${limit}&skip=${skip}`;
 
-  try {
-    const response = await fetch(
-      `https://dummyjson.com/products/search?${queryString}`
-    );
-    return response.json();
-  } catch (error) {
-    console.error(error);
-    throw error;
+  const response = await fetch(
+    `https://dummyjson.com/products/search?${queryString}`
+  );
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch products');
   }
+
+  return response.json();
 };

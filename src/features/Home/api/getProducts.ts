@@ -6,17 +6,15 @@ export const getProducts = async ({
   skip,
   sort,
 }: ProductParams): Promise<ProductRes> => {
-  try {
-    const queryString = sort
-      ? `limit=${limit}&skip=${skip}&sortBy=${sort}&order=desc`
-      : `limit=${limit}&skip=${skip}`;
+  const queryString = sort
+    ? `limit=${limit}&skip=${skip}&sortBy=${sort}&order=desc`
+    : `limit=${limit}&skip=${skip}`;
 
-    const response = await fetch(
-      `https://dummyjson.com/products?${queryString}`
-    );
-    return response.json();
-  } catch (error) {
-    console.error(error);
-    throw error;
+  const response = await fetch(`https://dummyjson.com/products?${queryString}`);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch products');
   }
+
+  return response.json();
 };
