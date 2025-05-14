@@ -1,5 +1,6 @@
-import { ProductRes } from '@/types/api';
 import { useInfiniteQuery } from '@tanstack/react-query';
+
+import { ProductRes } from '@/types/api';
 
 interface Props<T> {
   initialData: ProductRes;

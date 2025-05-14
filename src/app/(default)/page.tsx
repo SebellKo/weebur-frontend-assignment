@@ -1,6 +1,7 @@
+import { Metadata } from 'next';
+
 import { getProducts } from '@/features/Home/api/getProducts';
 import HomeList from '@/features/Home/components/HomeList';
-import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Home | Product List',

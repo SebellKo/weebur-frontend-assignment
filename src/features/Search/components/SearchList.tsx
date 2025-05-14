@@ -1,10 +1,12 @@
 'use client';
 
-import List from '@/components/commons/List/List';
 import { ProductRes } from '@/types/api';
-import useList from '@/hooks/useList';
-import { getSearch } from '@/features/Search/api/getSearch';
 import { SearchParams } from '@/features/Search/types/api';
+import { getSearch } from '@/features/Search/api/getSearch';
+import useList from '@/hooks/useList';
+
+import List from '@/components/commons/List/List';
+
 interface Props {
   initialData: ProductRes;
   query: string;

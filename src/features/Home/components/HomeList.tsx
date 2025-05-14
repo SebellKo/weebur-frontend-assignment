@@ -1,9 +1,10 @@
 'use client';
 
-import List from '@/components/commons/List/List';
 import { ProductRes, ProductParams } from '@/types/api';
-import useList from '@/hooks/useList';
 import { getProducts } from '@/features/Home/api/getProducts';
+import useList from '@/hooks/useList';
+
+import List from '@/components/commons/List/List';
 
 interface Props {
   initialData: ProductRes;

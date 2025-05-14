@@ -1,11 +1,13 @@
 'use client';
 
-import FlexItem from '@/components/commons/List/FlexItem';
-import GridItem from '@/components/commons/List/GridItem';
-import { Product } from '@/types/api';
 import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
+
+import { Product } from '@/types/api';
 import { Layout } from '@/types/layout';
+
+import FlexItem from '@/components/commons/List/FlexItem';
+import GridItem from '@/components/commons/List/GridItem';
 import Spinner from '@/components/ui/spinner';
 
 interface Props {

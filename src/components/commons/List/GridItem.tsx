@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import { Product } from '@/types/api';
 
 interface Props {
