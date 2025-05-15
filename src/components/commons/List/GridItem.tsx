@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { Product } from '@/types/api';
 
@@ -17,13 +17,13 @@ function GridItem({ product }: Props) {
   const [isOver, setIsOver] = useState(false);
   const { title, description, thumbnail, rating, reviews } = product;
 
-  const handleOverItem = () => {
+  const handleOverItem = useCallback(() => {
     setIsOver(true);
-  };
+  }, []);
 
-  const handleLeaveItem = () => {
+  const handleLeaveItem = useCallback(() => {
     setIsOver(false);
-  };
+  }, []);
 
   return (
     <li

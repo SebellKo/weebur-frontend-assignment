@@ -1,7 +1,7 @@
 'use client';
 
 import { useInView } from 'react-intersection-observer';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { Product } from '@/types/api';
 import { Layout } from '@/types/layout';
@@ -39,6 +39,12 @@ function List({
   const [isLayoutLoading, setIsLayoutLoading] = useState(true);
   // 무한 스크롤 컴포넌트
   const { ref, inView } = useInView();
+
+  const layoutClass = useMemo(() => {
+    return currentLayout === 'flex'
+      ? 'flex flex-col gap-3 p-3'
+      : 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-3';
+  }, [currentLayout]);
 
   useEffect(() => {
     // 레이아웃 정보 가져오기
@@ -84,13 +90,7 @@ function List({
   return (
     <>
       {/* 레이아웃 정보에 따른 레이아웃 적용 */}
-      <ul
-        className={`${
-          currentLayout === 'flex'
-            ? 'flex flex-col gap-3 p-3'
-            : 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-3'
-        }`}
-      >
+      <ul className={layoutClass}>
         {products.map((product) => {
           return currentLayout === 'flex' ? (
             <FlexItem key={product.id} product={product} />
