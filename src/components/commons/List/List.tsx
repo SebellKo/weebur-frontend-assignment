@@ -35,6 +35,8 @@ function List({
 }: Props) {
   // 현재 레이아웃 상태
   const [currentLayout, setCurrentLayout] = useState<Layout | null>(null);
+  // 레이아웃 로딩 상태를 관리하는 별도의 상태
+  const [isLayoutLoading, setIsLayoutLoading] = useState(true);
   // 무한 스크롤 컴포넌트
   const { ref, inView } = useInView();
 
@@ -45,15 +47,22 @@ function List({
     );
 
     // 레이아웃 정보가 없거나 24시간 이상 지났으면 새로운 레이아웃 설정
-    if (!layout || timestamp < Date.now() - 1000 * 60 * 60 * 24) {
+    if (!layout || timestamp < Date.now() * 1000) {
+      // if (!layout || timestamp < Date.now() - 1000 * 60 * 60 * 24) {
+      // 로딩 상태로 설정
+      setIsLayoutLoading(true);
+      // 새로운 레이아웃 계산
       const newLayout = Math.random() < 0.5 ? 'flex' : 'grid';
       localStorage.setItem(
         'layout',
         JSON.stringify({ layout: newLayout, timestamp: Date.now() })
       );
+      // 레이아웃 설정 및 로딩 상태 해제
       setCurrentLayout(newLayout);
+      setIsLayoutLoading(false);
     } else {
       setCurrentLayout(layout);
+      setIsLayoutLoading(false);
     }
   }, []);
 
@@ -64,13 +73,14 @@ function List({
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
-  // 레이아웃 정보가 없으면 로딩 fallback 표시
-  if (!currentLayout)
+  // 레이아웃이 로딩 중이거나 결정되지 않았으면 스피너 표시
+  if (isLayoutLoading || !currentLayout) {
     return (
       <div className='flex justify-center items-center mt-10'>
         <Spinner />
       </div>
     );
+  }
 
   return (
     <>
