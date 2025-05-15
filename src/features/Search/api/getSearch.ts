@@ -14,7 +14,7 @@ export const getSearch = async ({ query, limit, skip, sort }: SearchParams) => {
     : `q=${query}&limit=${limit}&skip=${skip}`;
 
   const response = await fetch(
-    `https://dummyjson.com/products/search?${queryString}`
+    `${process.env.NEXT_PUBLIC_API_URL}/products/search?${queryString}`
   );
 
   if (!response.ok) {

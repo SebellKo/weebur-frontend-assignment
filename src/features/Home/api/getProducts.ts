@@ -18,7 +18,9 @@ export const getProducts = async ({
     ? `limit=${limit}&skip=${skip}&sortBy=${sort}&order=desc`
     : `limit=${limit}&skip=${skip}`;
 
-  const response = await fetch(`https://dummyjson.com/products?${queryString}`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/products?${queryString}`
+  );
 
   if (!response.ok) {
     throw new Error('Failed to fetch products');
