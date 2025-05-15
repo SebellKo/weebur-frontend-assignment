@@ -47,8 +47,7 @@ function List({
     );
 
     // 레이아웃 정보가 없거나 24시간 이상 지났으면 새로운 레이아웃 설정
-    if (!layout || timestamp < Date.now() * 1000) {
-      // if (!layout || timestamp < Date.now() - 1000 * 60 * 60 * 24) {
+    if (!layout || timestamp < Date.now() - 1000 * 60 * 60 * 24) {
       // 로딩 상태로 설정
       setIsLayoutLoading(true);
       // 새로운 레이아웃 계산
